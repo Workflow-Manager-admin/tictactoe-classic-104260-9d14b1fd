@@ -8,3 +8,10 @@
 
   ➜  Local:   http://localhost:3000/
   ➜  Network: http://172.17.0.2:3000/
+7:32:18 PM [vite] vite.config.ts changed, restarting server...
+7:32:18 PM [vite] server restarted.
+7:32:28 PM [vite] (client) ✨ new dependencies optimized: clsx
+7:32:28 PM [vite] (client) ✨ optimized dependencies changed. reloading
+7:33:29 PM [vite] (ssr) page reload src/routes/+page.svelte
+7:33:29 PM [vite] (ssr) page reload src/routes/+page.svelte
+7:33:29 PM [vite] (ssr) page reload src/routes/+page.svelte
