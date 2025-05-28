@@ -15,3 +15,554 @@
 7:33:29 PM [vite] (ssr) page reload src/routes/+page.svelte
 7:33:29 PM [vite] (ssr) page reload src/routes/+page.svelte
 7:33:29 PM [vite] (ssr) page reload src/routes/+page.svelte
+7:33:47 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+7:33:47 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+7:33:47 PM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+7:33:47 PM [vite] (client) page reload .svelte-kit/generated/client/app.js
+7:33:47 PM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+7:33:47 PM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+7:33:47 PM [vite] (client) page reload .svelte-kit/generated/root.js
+7:33:47 PM [vite] (ssr) page reload .svelte-kit/generated/root.js
+7:33:48 PM [vite] (ssr) Error when evaluating SSR module /src/routes/+page.svelte: src/routes/+page.svelte:79:15 Expected a valid CSS identifier
+https://svelte.dev/e/css_expected_identifier
+
+- Did you forget to add a lang attribute to your style tag?
+  Plugin: vite-plugin-svelte
+  File: src/routes/+page.svelte:79:15
+   77 |      justify-content: center;
+   78 |      align-items: center;
+   79 |      background: {COLOR_SECONDARY};
+                        ^
+   80 |      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+   81 |    }
+[Error [CompileError]: src/routes/+page.svelte:79:15 Expected a valid CSS identifier
+https://svelte.dev/e/css_expected_identifier
+
+- Did you forget to add a lang attribute to your style tag?] {
+  id: 'src/routes/+page.svelte',
+  frame: ' 77 |      justify-content: center;\n' +
+    ' 78 |      align-items: center;\n' +
+    ' 79 |      background: {COLOR_SECONDARY};\n' +
+    '                      ^\n' +
+    " 80 |      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;\n" +
+    ' 81 |    }',
+  code: 'css_expected_identifier',
+  loc: { line: 79, column: 15, file: 'src/routes/+page.svelte' },
+  plugin: 'vite-plugin-svelte',
+  pluginCode: '<script lang="ts">\n' +
+    '  // PUBLIC_INTERFACE\n' +
+    '  /**\n' +
+    '   * A classic TicTacToe game: two players, local mode, win/draw detection, and board reset.\n' +
+    '   */\n' +
+    '\n' +
+    '  // Color Theme\n' +
+    "  const COLOR_PRIMARY = '#2196F3'; // X color and accents\n" +
+    "  const COLOR_SECONDARY = '#FFFFFF'; // Background, most surfaces\n" +
+    "  const COLOR_ACCENT = '#FF9800'; // O color, result accent\n" +
+    '\n' +
+    "  type Player = 'X' | 'O';\n" +
+    '  type Cell = Player | null;\n' +
+    '  type Result = { winner: Player } | { draw: true } | null;\n' +
+    '\n' +
+    '  // Board state: 3x3, row-major\n' +
+    '  let board: Cell[] = Array(9).fill(null);\n' +
+    "  let currentPlayer: Player = 'X'; // X always starts\n" +
+    '  \n' +
+    '  let result: Result = null; // winner or draw\n' +
+    '  let moves = 0; // number of moves played\n' +
+    '\n' +
+    '  // Helper lines for win detection\n' +
+    '  const lines = [\n' +
+    '    [0, 1, 2],\n' +
+    '    [3, 4, 5],\n' +
+    '    [6, 7, 8], // rows\n' +
+    '    [0, 3, 6],\n' +
+    '    [1, 4, 7],\n' +
+    '    [2, 5, 8], // cols\n' +
+    '    [0, 4, 8],\n' +
+    '    [2, 4, 6]  // diags\n' +
+    '  ];\n' +
+    '\n' +
+    '  // PUBLIC_INTERFACE\n' +
+    '  function handleCellClick(idx: number) {\n' +
+    '    if (board[idx] || result) return; // occupied or game over\n' +
+    '\n' +
+    '    board[idx] = currentPlayer;\n' +
+    '    moves += 1;\n' +
+    '    checkGameState();\n' +
+    '\n' +
+    '    if (!result) {\n' +
+    "      currentPlayer = currentPlayer === 'X' ? 'O' : 'X';\n" +
+    '    }\n' +
+    '  }\n' +
+    '\n' +
+    '  // PUBLIC_INTERFACE\n' +
+    '  function checkGameState() {\n' +
+    '    // Win detection\n' +
+    '    for (const [a, b, c] of lines) {\n' +
+    '      if (board[a] && board[a] === board[b] && board[a] === board[c]) {\n' +
+    '        result = { winner: board[a] as Player };\n' +
+    '        return;\n' +
+    '      }\n' +
+    '    }\n' +
+    '    // Draw if all cells filled and no winner\n' +
+    '    if (moves === 9) {\n' +
+    '      result = { draw: true };\n' +
+    '    }\n' +
+    '  }\n' +
+    '\n' +
+    '  // PUBLIC_INTERFACE\n' +
+    '  function restartGame() {\n' +
+    '    board = Array(9).fill(null);\n' +
+    "    currentPlayer = 'X';\n" +
+    '    result = null;\n' +
+    '    moves = 0;\n' +
+    '  }\n' +
+    '</script>\n' +
+    '\n' +
+    '<style>\n' +
+    '  .container {\n' +
+    '    min-height: 100vh;\n' +
+    '    display: flex;\n' +
+    '    flex-direction: column;\n' +
+    '    justify-content: center;\n' +
+    '    align-items: center;\n' +
+    '    background: {COLOR_SECONDARY};\n' +
+    "    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;\n" +
+    '  }\n' +
+    '  .status {\n' +
+    '    margin-bottom: 2rem;\n' +
+    '    font-size: 1.5rem;\n' +
+    '    color: {COLOR_PRIMARY};\n' +
+    '    font-weight: 600;\n' +
+    '    text-align: center;\n' +
+    '    letter-spacing: 1px;\n' +
+    '  }\n' +
+    '  .grid {\n' +
+    '    display: grid;\n' +
+    '    grid-template-columns: repeat(3, clamp(64px, 10vw, 100px));\n' +
+    '    grid-template-rows: repeat(3, clamp(64px, 10vw, 100px));\n' +
+    '    gap: 10px;\n' +
+    '    background: {COLOR_PRIMARY}11;\n' +
+    '    padding: 20px 24px;\n' +
+    '    border-radius: 1.25rem;\n' +
+    '    box-shadow: 0 2px 8px #0001;\n' +
+    '    margin-bottom: 2rem;\n' +
+    '  }\n' +
+    '  .cell {\n' +
+    '    background: {COLOR_SECONDARY};\n' +
+    '    border: 2.5px solid {COLOR_PRIMARY};\n' +
+    '    border-radius: 15px;\n' +
+    '    width: 100%;\n' +
+    '    height: 100%;\n' +
+    '    font-size: 2.5rem;\n' +
+    '    color: {COLOR_ACCENT};\n' +
+    '    display: flex;\n' +
+    '    justify-content: center;\n' +
+    '    align-items: center;\n' +
+    '    cursor: pointer;\n' +
+    '    font-weight: 700;\n' +
+    '    position: relative;\n' +
+    '    transition: background 0.14s, color 0.14s;\n' +
+    '    user-select: none;\n' +
+    '  }\n' +
+    '  .cell.played-x {\n' +
+    '    color: {COLOR_PRIMARY};\n' +
+    '  }\n' +
+    '  .cell.played-o {\n' +
+    '    color: {COLOR_ACCENT};\n' +
+    '  }\n' +
+    '  .cell:disabled, .cell.disabled {\n' +
+    '    opacity: 0.54;\n' +
+    '    pointer-events: none;\n' +
+    '    cursor: not-allowed;\n' +
+    '  }\n' +
+    '  .controls {\n' +
+    '    display: flex;\n' +
+    '    flex-direction: column;\n' +
+    '    align-items: center;\n' +
+    '    gap: 16px;\n' +
+    '    min-height: 40px;\n' +
+    '  }\n' +
+    '  .restart-btn {\n' +
+    '    background: {COLOR_PRIMARY};\n' +
+    '    color: {COLOR_SECONDARY};\n' +
+    '    border: none;\n' +
+    '    padding: 0.7em 2.2em;\n' +
+    '    border-radius: 20px;\n' +
+    '    font-weight: 600;\n' +
+    '    font-size: 1.15rem;\n' +
+    '    cursor: pointer;\n' +
+    '    transition: background 0.16s;\n' +
+    '    margin-bottom: 0.25rem;\n' +
+    '    box-shadow: 0 1px 4px {COLOR_PRIMARY}33;\n' +
+    '  }\n' +
+    '  .restart-btn:hover {\n' +
+    '    background: {COLOR_ACCENT};\n' +
+    '    color: {COLOR_SECONDARY};\n' +
+    '  }\n' +
+    '  .result-msg {\n' +
+    '    font-size: 1.18rem;\n' +
+    '    font-weight: 500;\n' +
+    '    color: {COLOR_ACCENT};\n' +
+    '    background: #fff7ea;\n' +
+    '    border-radius: 12px;\n' +
+    '    padding: 0.5em 1.2em;\n' +
+    '    margin-top: 0.3em;\n' +
+    '    box-shadow: 0 2px 8px #ff980018;\n' +
+    '    letter-spacing: 1px;\n' +
+    '    min-width: 120px;\n' +
+    '    text-align: center;\n' +
+    '    border: 1.5px solid {COLOR_ACCENT}66;\n' +
+    '    display: inline-block;\n' +
+    '  }\n' +
+    '  @media (max-width: 600px) {\n' +
+    '    .grid {\n' +
+    '      grid-template-columns: repeat(3, 22vw);\n' +
+    '      grid-template-rows: repeat(3, 22vw);\n' +
+    '      padding: 6vw 1vw 6vw 1vw;\n' +
+    '    }\n' +
+    '    .status {\n' +
+    '      font-size: 1.12rem;\n' +
+    '      margin-bottom: 1rem;\n' +
+    '    }\n' +
+    '    .restart-btn {\n' +
+    '      font-size: 1rem;\n' +
+    '      padding: 0.72em 1.2em;\n' +
+    '    }\n' +
+    '    .result-msg {\n' +
+    '      font-size: 1rem;\n' +
+    '    }\n' +
+    '  }\n' +
+    '</style>\n' +
+    '\n' +
+    '<div class="container">\n' +
+    '  <div class="status">\n' +
+    '    {#if result}\n' +
+    "      {#if 'winner' in result}\n" +
+    '        <span style="color:{COLOR_ACCENT};">Winner: </span>\n' +
+    `        <span style="color:{result.winner === 'X' ? COLOR_PRIMARY : COLOR_ACCENT};">\n` +
+    '          {result.winner}\n' +
+    '        </span>\n' +
+    '      {:else}\n' +
+    '        <span style="color:{COLOR_ACCENT};">Draw!</span>\n' +
+    '      {/if}\n' +
+    '    {:else}\n' +
+    '      Current Turn:\n' +
+    `      <span style="color:{currentPlayer === 'X' ? COLOR_PRIMARY : COLOR_ACCENT}; margin-left: 7px;">\n` +
+    '        {currentPlayer}\n' +
+    '      </span>\n' +
+    '    {/if}\n' +
+    '  </div>\n' +
+    '  <div class="grid" role="grid" aria-label="TicTacToe Board">\n' +
+    '    {#each board as cell, idx (idx)}\n' +
+    '      <button\n' +
+    '        type="button"\n' +
+    `        class="cell {cell === 'X' ? 'played-x' : ''} {cell === 'O' ? 'played-o' : ''} {result ? 'disabled' : ''}"\n` +
+    '        aria-label="TicTacToe Cell"\n' +
+    '        on:click={() => handleCellClick(idx)}\n' +
+    '        disabled={!!result || !!cell}\n' +
+    '        tabindex={cell || result ? -1 : 0}\n' +
+    '      >\n' +
+    '        {cell}\n' +
+    '      </button>\n' +
+    '    {/each}\n' +
+    '  </div>\n' +
+    '  <div class="controls">\n' +
+    '    <button class="restart-btn" on:click={restartGame}>Restart Game</button>\n' +
+    '    {#if result}\n' +
+    '      <span class="result-msg">\n' +
+    "        {#if 'winner' in result}\n" +
+    `          Player <span style="font-weight:600; color:{result.winner === 'X' ? COLOR_PRIMARY : COLOR_ACCENT};">{result.winner}</span> wins!\n` +
+    '        {:else}\n' +
+    '          Draw! No winner.\n' +
+    '        {/if}\n' +
+    '      </span>\n' +
+    '    {/if}\n' +
+    '  </div>\n' +
+    '</div>\n',
+  runnerError: Error: RunnerError
+      at reviveInvokeError (file:///home/kavia/workspace/code-generation/tictactoe-classic-104260-9d14b1fd/tic_tac_toe/node_modules/vite/dist/node/module-runner.js:541:18)
+      at Object.invoke (file:///home/kavia/workspace/code-generation/tictactoe-classic-104260-9d14b1fd/tic_tac_toe/node_modules/vite/dist/node/module-runner.js:624:15)
+      at async SSRCompatModuleRunner.getModuleInformation (file:///home/kavia/workspace/code-generation/tictactoe-classic-104260-9d14b1fd/tic_tac_toe/node_modules/vite/dist/node/module-runner.js:1192:73)
+      at async SSRCompatModuleRunner.import (file:///home/kavia/workspace/code-generation/tictactoe-classic-104260-9d14b1fd/tic_tac_toe/node_modules/vite/dist/node/module-runner.js:1103:27)
+      at async instantiateModule (file:///home/kavia/workspace/code-generation/tictactoe-classic-104260-9d14b1fd/tic_tac_toe/node_modules/vite/dist/node/chunks/dep-glQox-ep.js:30872:12)
+      at async loud_ssr_load_module (file:///home/kavia/workspace/code-generation/tictactoe-classic-104260-9d14b1fd/tic_tac_toe/node_modules/@sveltejs/kit/src/exports/vite/dev/index.js:69:11)
+      at async resolve (file:///home/kavia/workspace/code-generation/tictactoe-classic-104260-9d14b1fd/tic_tac_toe/node_modules/@sveltejs/kit/src/exports/vite/dev/index.js:96:18)
+      at async result.component (file:///home/kavia/workspace/code-generation/tictactoe-classic-104260-9d14b1fd/tic_tac_toe/node_modules/@sveltejs/kit/src/exports/vite/dev/index.js:194:41)
+      at async Promise.all (index 1)
+      at async render_response (/home/kavia/workspace/code-generation/tictactoe-classic-104260-9d14b1fd/tic_tac_toe/node_modules/@sveltejs/kit/src/runtime/server/page/render.js:76:21)
+}
+7:33:50 PM [vite] (ssr) Error when evaluating SSR module /src/routes/+page.svelte: src/routes/+page.svelte:79:15 Expected a valid CSS identifier
+https://svelte.dev/e/css_expected_identifier
+
+- Did you forget to add a lang attribute to your style tag?
+  Plugin: vite-plugin-svelte
+  File: src/routes/+page.svelte:79:15
+   77 |      justify-content: center;
+   78 |      align-items: center;
+   79 |      background: {COLOR_SECONDARY};
+                        ^
+   80 |      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+   81 |    }
+[Error [CompileError]: src/routes/+page.svelte:79:15 Expected a valid CSS identifier
+https://svelte.dev/e/css_expected_identifier
+
+- Did you forget to add a lang attribute to your style tag?] {
+  id: 'src/routes/+page.svelte',
+  frame: ' 77 |      justify-content: center;\n' +
+    ' 78 |      align-items: center;\n' +
+    ' 79 |      background: {COLOR_SECONDARY};\n' +
+    '                      ^\n' +
+    " 80 |      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;\n" +
+    ' 81 |    }',
+  code: 'css_expected_identifier',
+  loc: { line: 79, column: 15, file: 'src/routes/+page.svelte' },
+  plugin: 'vite-plugin-svelte',
+  pluginCode: '<script lang="ts">\n' +
+    '  // PUBLIC_INTERFACE\n' +
+    '  /**\n' +
+    '   * A classic TicTacToe game: two players, local mode, win/draw detection, and board reset.\n' +
+    '   */\n' +
+    '\n' +
+    '  // Color Theme\n' +
+    "  const COLOR_PRIMARY = '#2196F3'; // X color and accents\n" +
+    "  const COLOR_SECONDARY = '#FFFFFF'; // Background, most surfaces\n" +
+    "  const COLOR_ACCENT = '#FF9800'; // O color, result accent\n" +
+    '\n' +
+    "  type Player = 'X' | 'O';\n" +
+    '  type Cell = Player | null;\n' +
+    '  type Result = { winner: Player } | { draw: true } | null;\n' +
+    '\n' +
+    '  // Board state: 3x3, row-major\n' +
+    '  let board: Cell[] = Array(9).fill(null);\n' +
+    "  let currentPlayer: Player = 'X'; // X always starts\n" +
+    '  \n' +
+    '  let result: Result = null; // winner or draw\n' +
+    '  let moves = 0; // number of moves played\n' +
+    '\n' +
+    '  // Helper lines for win detection\n' +
+    '  const lines = [\n' +
+    '    [0, 1, 2],\n' +
+    '    [3, 4, 5],\n' +
+    '    [6, 7, 8], // rows\n' +
+    '    [0, 3, 6],\n' +
+    '    [1, 4, 7],\n' +
+    '    [2, 5, 8], // cols\n' +
+    '    [0, 4, 8],\n' +
+    '    [2, 4, 6]  // diags\n' +
+    '  ];\n' +
+    '\n' +
+    '  // PUBLIC_INTERFACE\n' +
+    '  function handleCellClick(idx: number) {\n' +
+    '    if (board[idx] || result) return; // occupied or game over\n' +
+    '\n' +
+    '    board[idx] = currentPlayer;\n' +
+    '    moves += 1;\n' +
+    '    checkGameState();\n' +
+    '\n' +
+    '    if (!result) {\n' +
+    "      currentPlayer = currentPlayer === 'X' ? 'O' : 'X';\n" +
+    '    }\n' +
+    '  }\n' +
+    '\n' +
+    '  // PUBLIC_INTERFACE\n' +
+    '  function checkGameState() {\n' +
+    '    // Win detection\n' +
+    '    for (const [a, b, c] of lines) {\n' +
+    '      if (board[a] && board[a] === board[b] && board[a] === board[c]) {\n' +
+    '        result = { winner: board[a] as Player };\n' +
+    '        return;\n' +
+    '      }\n' +
+    '    }\n' +
+    '    // Draw if all cells filled and no winner\n' +
+    '    if (moves === 9) {\n' +
+    '      result = { draw: true };\n' +
+    '    }\n' +
+    '  }\n' +
+    '\n' +
+    '  // PUBLIC_INTERFACE\n' +
+    '  function restartGame() {\n' +
+    '    board = Array(9).fill(null);\n' +
+    "    currentPlayer = 'X';\n" +
+    '    result = null;\n' +
+    '    moves = 0;\n' +
+    '  }\n' +
+    '</script>\n' +
+    '\n' +
+    '<style>\n' +
+    '  .container {\n' +
+    '    min-height: 100vh;\n' +
+    '    display: flex;\n' +
+    '    flex-direction: column;\n' +
+    '    justify-content: center;\n' +
+    '    align-items: center;\n' +
+    '    background: {COLOR_SECONDARY};\n' +
+    "    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;\n" +
+    '  }\n' +
+    '  .status {\n' +
+    '    margin-bottom: 2rem;\n' +
+    '    font-size: 1.5rem;\n' +
+    '    color: {COLOR_PRIMARY};\n' +
+    '    font-weight: 600;\n' +
+    '    text-align: center;\n' +
+    '    letter-spacing: 1px;\n' +
+    '  }\n' +
+    '  .grid {\n' +
+    '    display: grid;\n' +
+    '    grid-template-columns: repeat(3, clamp(64px, 10vw, 100px));\n' +
+    '    grid-template-rows: repeat(3, clamp(64px, 10vw, 100px));\n' +
+    '    gap: 10px;\n' +
+    '    background: {COLOR_PRIMARY}11;\n' +
+    '    padding: 20px 24px;\n' +
+    '    border-radius: 1.25rem;\n' +
+    '    box-shadow: 0 2px 8px #0001;\n' +
+    '    margin-bottom: 2rem;\n' +
+    '  }\n' +
+    '  .cell {\n' +
+    '    background: {COLOR_SECONDARY};\n' +
+    '    border: 2.5px solid {COLOR_PRIMARY};\n' +
+    '    border-radius: 15px;\n' +
+    '    width: 100%;\n' +
+    '    height: 100%;\n' +
+    '    font-size: 2.5rem;\n' +
+    '    color: {COLOR_ACCENT};\n' +
+    '    display: flex;\n' +
+    '    justify-content: center;\n' +
+    '    align-items: center;\n' +
+    '    cursor: pointer;\n' +
+    '    font-weight: 700;\n' +
+    '    position: relative;\n' +
+    '    transition: background 0.14s, color 0.14s;\n' +
+    '    user-select: none;\n' +
+    '  }\n' +
+    '  .cell.played-x {\n' +
+    '    color: {COLOR_PRIMARY};\n' +
+    '  }\n' +
+    '  .cell.played-o {\n' +
+    '    color: {COLOR_ACCENT};\n' +
+    '  }\n' +
+    '  .cell:disabled, .cell.disabled {\n' +
+    '    opacity: 0.54;\n' +
+    '    pointer-events: none;\n' +
+    '    cursor: not-allowed;\n' +
+    '  }\n' +
+    '  .controls {\n' +
+    '    display: flex;\n' +
+    '    flex-direction: column;\n' +
+    '    align-items: center;\n' +
+    '    gap: 16px;\n' +
+    '    min-height: 40px;\n' +
+    '  }\n' +
+    '  .restart-btn {\n' +
+    '    background: {COLOR_PRIMARY};\n' +
+    '    color: {COLOR_SECONDARY};\n' +
+    '    border: none;\n' +
+    '    padding: 0.7em 2.2em;\n' +
+    '    border-radius: 20px;\n' +
+    '    font-weight: 600;\n' +
+    '    font-size: 1.15rem;\n' +
+    '    cursor: pointer;\n' +
+    '    transition: background 0.16s;\n' +
+    '    margin-bottom: 0.25rem;\n' +
+    '    box-shadow: 0 1px 4px {COLOR_PRIMARY}33;\n' +
+    '  }\n' +
+    '  .restart-btn:hover {\n' +
+    '    background: {COLOR_ACCENT};\n' +
+    '    color: {COLOR_SECONDARY};\n' +
+    '  }\n' +
+    '  .result-msg {\n' +
+    '    font-size: 1.18rem;\n' +
+    '    font-weight: 500;\n' +
+    '    color: {COLOR_ACCENT};\n' +
+    '    background: #fff7ea;\n' +
+    '    border-radius: 12px;\n' +
+    '    padding: 0.5em 1.2em;\n' +
+    '    margin-top: 0.3em;\n' +
+    '    box-shadow: 0 2px 8px #ff980018;\n' +
+    '    letter-spacing: 1px;\n' +
+    '    min-width: 120px;\n' +
+    '    text-align: center;\n' +
+    '    border: 1.5px solid {COLOR_ACCENT}66;\n' +
+    '    display: inline-block;\n' +
+    '  }\n' +
+    '  @media (max-width: 600px) {\n' +
+    '    .grid {\n' +
+    '      grid-template-columns: repeat(3, 22vw);\n' +
+    '      grid-template-rows: repeat(3, 22vw);\n' +
+    '      padding: 6vw 1vw 6vw 1vw;\n' +
+    '    }\n' +
+    '    .status {\n' +
+    '      font-size: 1.12rem;\n' +
+    '      margin-bottom: 1rem;\n' +
+    '    }\n' +
+    '    .restart-btn {\n' +
+    '      font-size: 1rem;\n' +
+    '      padding: 0.72em 1.2em;\n' +
+    '    }\n' +
+    '    .result-msg {\n' +
+    '      font-size: 1rem;\n' +
+    '    }\n' +
+    '  }\n' +
+    '</style>\n' +
+    '\n' +
+    '<div class="container">\n' +
+    '  <div class="status">\n' +
+    '    {#if result}\n' +
+    "      {#if 'winner' in result}\n" +
+    '        <span style="color:{COLOR_ACCENT};">Winner: </span>\n' +
+    `        <span style="color:{result.winner === 'X' ? COLOR_PRIMARY : COLOR_ACCENT};">\n` +
+    '          {result.winner}\n' +
+    '        </span>\n' +
+    '      {:else}\n' +
+    '        <span style="color:{COLOR_ACCENT};">Draw!</span>\n' +
+    '      {/if}\n' +
+    '    {:else}\n' +
+    '      Current Turn:\n' +
+    `      <span style="color:{currentPlayer === 'X' ? COLOR_PRIMARY : COLOR_ACCENT}; margin-left: 7px;">\n` +
+    '        {currentPlayer}\n' +
+    '      </span>\n' +
+    '    {/if}\n' +
+    '  </div>\n' +
+    '  <div class="grid" role="grid" aria-label="TicTacToe Board">\n' +
+    '    {#each board as cell, idx (idx)}\n' +
+    '      <button\n' +
+    '        type="button"\n' +
+    `        class="cell {cell === 'X' ? 'played-x' : ''} {cell === 'O' ? 'played-o' : ''} {result ? 'disabled' : ''}"\n` +
+    '        aria-label="TicTacToe Cell"\n' +
+    '        on:click={() => handleCellClick(idx)}\n' +
+    '        disabled={!!result || !!cell}\n' +
+    '        tabindex={cell || result ? -1 : 0}\n' +
+    '      >\n' +
+    '        {cell}\n' +
+    '      </button>\n' +
+    '    {/each}\n' +
+    '  </div>\n' +
+    '  <div class="controls">\n' +
+    '    <button class="restart-btn" on:click={restartGame}>Restart Game</button>\n' +
+    '    {#if result}\n' +
+    '      <span class="result-msg">\n' +
+    "        {#if 'winner' in result}\n" +
+    `          Player <span style="font-weight:600; color:{result.winner === 'X' ? COLOR_PRIMARY : COLOR_ACCENT};">{result.winner}</span> wins!\n` +
+    '        {:else}\n' +
+    '          Draw! No winner.\n' +
+    '        {/if}\n' +
+    '      </span>\n' +
+    '    {/if}\n' +
+    '  </div>\n' +
+    '</div>\n',
+  runnerError: Error: RunnerError
+      at reviveInvokeError (file:///home/kavia/workspace/code-generation/tictactoe-classic-104260-9d14b1fd/tic_tac_toe/node_modules/vite/dist/node/module-runner.js:541:18)
+      at Object.invoke (file:///home/kavia/workspace/code-generation/tictactoe-classic-104260-9d14b1fd/tic_tac_toe/node_modules/vite/dist/node/module-runner.js:624:15)
+      at async SSRCompatModuleRunner.getModuleInformation (file:///home/kavia/workspace/code-generation/tictactoe-classic-104260-9d14b1fd/tic_tac_toe/node_modules/vite/dist/node/module-runner.js:1192:73)
+      at async SSRCompatModuleRunner.import (file:///home/kavia/workspace/code-generation/tictactoe-classic-104260-9d14b1fd/tic_tac_toe/node_modules/vite/dist/node/module-runner.js:1103:27)
+      at async instantiateModule (file:///home/kavia/workspace/code-generation/tictactoe-classic-104260-9d14b1fd/tic_tac_toe/node_modules/vite/dist/node/chunks/dep-glQox-ep.js:30872:12)
+      at async loud_ssr_load_module (file:///home/kavia/workspace/code-generation/tictactoe-classic-104260-9d14b1fd/tic_tac_toe/node_modules/@sveltejs/kit/src/exports/vite/dev/index.js:69:11)
+      at async resolve (file:///home/kavia/workspace/code-generation/tictactoe-classic-104260-9d14b1fd/tic_tac_toe/node_modules/@sveltejs/kit/src/exports/vite/dev/index.js:96:18)
+      at async result.component (file:///home/kavia/workspace/code-generation/tictactoe-classic-104260-9d14b1fd/tic_tac_toe/node_modules/@sveltejs/kit/src/exports/vite/dev/index.js:194:41)
+      at async Promise.all (index 1)
+      at async render_response (/home/kavia/workspace/code-generation/tictactoe-classic-104260-9d14b1fd/tic_tac_toe/node_modules/@sveltejs/kit/src/runtime/server/page/render.js:76:21)
+}
+7:33:50 PM [vite] (client) ✨ new dependencies optimized: devalue
+7:33:50 PM [vite] (client) ✨ optimized dependencies changed. reloading
+7:33:56 PM [vite] (ssr) page reload src/routes/+page.svelte

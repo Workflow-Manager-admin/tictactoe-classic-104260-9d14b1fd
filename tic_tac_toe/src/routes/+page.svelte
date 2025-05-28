@@ -6,7 +6,6 @@
 
   // Color Theme
   const COLOR_PRIMARY = '#2196F3'; // X color and accents
-  const COLOR_SECONDARY = '#FFFFFF'; // Background, most surfaces
   const COLOR_ACCENT = '#FF9800'; // O color, result accent
 
   type Player = 'X' | 'O';
