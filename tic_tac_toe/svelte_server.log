@@ -566,3 +566,5 @@ https://svelte.dev/e/css_expected_identifier
 7:33:50 PM [vite] (client) ✨ new dependencies optimized: devalue
 7:33:50 PM [vite] (client) ✨ optimized dependencies changed. reloading
 7:33:56 PM [vite] (ssr) page reload src/routes/+page.svelte
+7:34:14 PM [vite] (client) hmr update /src/routes/+page.svelte
+7:34:14 PM [vite] (ssr) page reload src/routes/+page.svelte

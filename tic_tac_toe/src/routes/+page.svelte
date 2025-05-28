@@ -75,13 +75,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: {COLOR_SECONDARY};
+    background: #FFFFFF;
     font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
   }
   .status {
     margin-bottom: 2rem;
     font-size: 1.5rem;
-    color: {COLOR_PRIMARY};
+    color: #2196F3;
     font-weight: 600;
     text-align: center;
     letter-spacing: 1px;
@@ -91,20 +91,20 @@
     grid-template-columns: repeat(3, clamp(64px, 10vw, 100px));
     grid-template-rows: repeat(3, clamp(64px, 10vw, 100px));
     gap: 10px;
-    background: {COLOR_PRIMARY}11;
+    background: #2196F311;
     padding: 20px 24px;
     border-radius: 1.25rem;
     box-shadow: 0 2px 8px #0001;
     margin-bottom: 2rem;
   }
   .cell {
-    background: {COLOR_SECONDARY};
-    border: 2.5px solid {COLOR_PRIMARY};
+    background: #FFFFFF;
+    border: 2.5px solid #2196F3;
     border-radius: 15px;
     width: 100%;
     height: 100%;
     font-size: 2.5rem;
-    color: {COLOR_ACCENT};
+    color: #FF9800;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -115,10 +115,10 @@
     user-select: none;
   }
   .cell.played-x {
-    color: {COLOR_PRIMARY};
+    color: #2196F3;
   }
   .cell.played-o {
-    color: {COLOR_ACCENT};
+    color: #FF9800;
   }
   .cell:disabled, .cell.disabled {
     opacity: 0.54;
@@ -133,8 +133,8 @@
     min-height: 40px;
   }
   .restart-btn {
-    background: {COLOR_PRIMARY};
-    color: {COLOR_SECONDARY};
+    background: #2196F3;
+    color: #FFFFFF;
     border: none;
     padding: 0.7em 2.2em;
     border-radius: 20px;
@@ -143,16 +143,16 @@
     cursor: pointer;
     transition: background 0.16s;
     margin-bottom: 0.25rem;
-    box-shadow: 0 1px 4px {COLOR_PRIMARY}33;
+    box-shadow: 0 1px 4px #2196F333;
   }
   .restart-btn:hover {
-    background: {COLOR_ACCENT};
-    color: {COLOR_SECONDARY};
+    background: #FF9800;
+    color: #FFFFFF;
   }
   .result-msg {
     font-size: 1.18rem;
     font-weight: 500;
-    color: {COLOR_ACCENT};
+    color: #FF9800;
     background: #fff7ea;
     border-radius: 12px;
     padding: 0.5em 1.2em;
@@ -161,7 +161,7 @@
     letter-spacing: 1px;
     min-width: 120px;
     text-align: center;
-    border: 1.5px solid {COLOR_ACCENT}66;
+    border: 1.5px solid #FF980066;
     display: inline-block;
   }
   @media (max-width: 600px) {
